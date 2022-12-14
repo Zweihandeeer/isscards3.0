@@ -27,6 +27,8 @@
 
                     <form>
                       <div class="form mb-4">
+                        {% csrf_token %}
+                        {{ usuario }}
                         <label class="form-label" for="form2Example11"
                           >Username</label
                         >
