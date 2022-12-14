@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*vo6f$xz&7jyvm6*c#g9x+*h25*$7j3a)bo1hhye6l4#7v8v#&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['eb-django-app-dev.elasticbeanstalk.com', '127.0.0.1', 'http://django-env.eba-mmtmpmcb.us-west-2.elasticbeanstalk.com/']
+ALLOWED_HOSTS = ['eb-django-app-dev.elasticbeanstalk.com', '127.0.0.1', 'http://django-env.eba-mmtmpmcb.us-west-2.elasticbeanstalk.com/' '*']
 
 
 # Application definition
@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
 
 ROOT_URLCONF = 'iss.urls'
@@ -126,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'iss/static',)]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 
 # Default primary key field type
