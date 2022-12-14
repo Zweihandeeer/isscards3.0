@@ -17,7 +17,7 @@ def home(request):
     context = {
         "username": username
     }  
-    return render(request, 'proyectoiss/coachview.html', context=context)
+    return render(request, 'iss/index.html', context=context)
 
 
 # Método de inicio de sesión al sistema.
@@ -40,7 +40,7 @@ def login(request):
                 if usuario is not None:
                     # Si los datos son válidos, crea la sesión
                     request.session['username'] = usuario.username
-                    return HttpResponseRedirect('/coach')
+                    return HttpResponseRedirect('/nuevas_observaciones')
         else:
             # Si no estamos recibiendo el formulario, entonces envíamos uno vacío
             usuario = LoginForm()
@@ -81,3 +81,9 @@ def cmatchup(request):
 
 def coachview2(request):
     return render(request, "coachview2.html")
+
+def logout(request):
+    if request.session.has_key('username'):
+        del request.session['username']
+
+    return HttpResponseRedirect('/login')
